@@ -3,6 +3,7 @@ import { useRouter } from 'next/dist/client/router';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
 import { SearchDealCard } from '../components/searchDealCard';
+import { Map } from '../components/map';
 
 export interface DealType {
   img: string;
@@ -29,31 +30,38 @@ const Search: React.FC<Props> = ({ searchResults }) => {
   const range = `From ${formattedStartDate} to ${formattedEndDate}`;
 
   return (
-    <div>
+    <div className="mx-auto">
       <Header />
 
-      <div className="space-y-4 pt-14 px-6">
-        <div className="flex justify-between">
-          <h3>300+ stays for {router.query.guestCount} number of guests!</h3>
-          <span className="text-gray-400">{range}</span>
-        </div>
+      <main className="mx-auto w-full">
+        <section className="space-y-4 pt-14 px-6">
+          <div className="flex justify-between">
+            <h3>300+ stays for {router.query.guestCount} number of guests!</h3>
+            <span className="text-gray-400">{range}</span>
+          </div>
 
-        <h1 className="text-2xl font-semibold">Stays in {router.query.location}</h1>
+          <h1 className="text-2xl font-semibold">Stays in {router.query.location}</h1>
 
-        <div className="flex space-x-2 flex-wrap">
-          <button className="button-outlined mb-2">Cancellation Flexibility</button>
-          <button className="button-outlined mb-2">Type of Place</button>
-          <button className="button-outlined mb-2">Price</button>
-          <button className="button-outlined mb-2">Rooms and Beds</button>
-          <button className="button-outlined mb-2">More filters</button>
-        </div>
-      </div>
+          <div className="flex space-x-2 flex-wrap">
+            <button className="button-outlined mb-2">Cancellation Flexibility</button>
+            <button className="button-outlined mb-2">Type of Place</button>
+            <button className="button-outlined mb-2">Price</button>
+            <button className="button-outlined mb-2">Rooms and Beds</button>
+            <button className="button-outlined mb-2">More filters</button>
+          </div>
+        </section>
 
-      <div className="space-y-4 px-6">
-        {searchResults?.map((item) => (
-          <SearchDealCard key={item.img} {...item} />
-        ))}
-      </div>
+        <section className="flex justify-center">
+          <div className="space-y-4 px-6">
+            {searchResults?.map((item) => (
+              <SearchDealCard key={item.img} {...item} />
+            ))}
+          </div>
+          <div className="hidden xl:inline-flex xl:min-w-[600px]">
+            <Map searchRes={searchResults} />
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

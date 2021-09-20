@@ -25,7 +25,7 @@ interface Props {
 
 export default function Home({ exploreData, mediumCardsData }: Props) {
   return (
-    <div className="">
+    <div className="mx-auto">
       <Head>
         <title>Airbnb</title>
         <link rel="icon" href="/favicon.ico" />

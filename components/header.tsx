@@ -59,7 +59,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 shadow-md bg-white p-5">
+    <header className="sticky top-0 z-40 shadow-md bg-white p-5">
       <div className="grid grid-cols-3">
         {/* Logo section */}
         <div className="flex h-10 relative items-center my-auto">
